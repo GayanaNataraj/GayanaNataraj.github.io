@@ -1,38 +1,20 @@
-// ==============================
-// Mobile Navigation
-// ==============================
-
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-
-    if (navLinks.classList.contains("active")) {
-        menuToggle.textContent = "✕";
-        menuToggle.setAttribute("aria-label", "Close navigation");
-    } else {
-        menuToggle.textContent = "☰";
-        menuToggle.setAttribute("aria-label", "Open navigation");
-    }
-});
-
-
-// Close mobile menu after clicking a navigation link
-
-const navigationItems = document.querySelectorAll(".nav-links a");
-
-navigationItems.forEach((item) => {
-    item.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        menuToggle.textContent = "☰";
-        menuToggle.setAttribute("aria-label", "Open navigation");
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
     });
-});
 
+    navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navLinks.classList.remove("active");
+        });
+    });
+}
 
-// ==============================
-// Current Year in Footer
-// ==============================
+const year = document.getElementById("year");
 
-document.getElementById("year").textContent = new Date().getFullYear();
+if (year) {
+    year.textContent = new Date().getFullYear();
+}
