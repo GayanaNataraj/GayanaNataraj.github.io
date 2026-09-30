@@ -1,38 +1,358 @@
-
 /* ==============================
-   ACTIVITY DETAILS
+   GENERAL
 ================================= */
 
-.activity-detail {
-    margin-top: 20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.activity-detail h4 {
-    margin-bottom: 7px;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f8fa;
     color: #172033;
-    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+
+/* ==============================
+   HEADER / NAVIGATION
+================================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e6e8ed;
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5rem;
     font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
-.activity-detail p {
-    margin-bottom: 12px;
-    color: #687385;
-    font-size: 0.94rem;
-}
-
-.activity-detail.learned {
-    margin-top: 22px;
-    padding: 16px 17px;
-    border-left: 3px solid #4f46e5;
-    background: #f7f7ff;
-}
-
-.activity-detail.learned h4 {
+.logo span {
     color: #4f46e5;
 }
 
-.activity-detail.learned p {
-    margin-bottom: 0;
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #596273;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #4f46e5;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+
+/* ==============================
+   HERO
+================================= */
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            #e8e9ff 0,
+            transparent 30%
+        ),
+        #f7f8fa;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.eyebrow,
+.section-label {
+    color: #4f46e5;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin: 18px 0;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -4px;
+}
+
+.hero h1 span {
+    color: #4f46e5;
+}
+
+.hero-description {
+    max-width: 650px;
+    color: #5e6878;
+    font-size: 1.12rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 21px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary-btn {
+    color: white;
+    background: #4f46e5;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.2);
+}
+
+.secondary-btn {
+    color: #172033;
+    background: white;
+    border: 1px solid #dfe2e8;
+}
+
+.hero-card {
+    padding: 42px 32px;
+    background: white;
+    border: 1px solid #e4e6eb;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(20, 25, 40, 0.08);
+    text-align: center;
+}
+
+.profile-icon {
+    width: 105px;
+    height: 105px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #4f46e5;
+    color: white;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.hero-card h2 {
+    margin-bottom: 5px;
+}
+
+.hero-card > p {
+    color: #697386;
+}
+
+.card-line {
+    width: 45px;
+    height: 3px;
+    margin: 24px auto;
+    background: #4f46e5;
+}
+
+.card-text {
+    font-size: 0.92rem;
+}
+
+
+/* ==============================
+   SECTIONS
+================================= */
+
+.section {
+    padding: 100px 0;
+}
+
+.section-heading {
+    max-width: 750px;
+    margin-bottom: 55px;
+}
+
+.section-heading h2 {
+    margin-top: 10px;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+}
+
+.section-intro {
+    margin-top: 18px;
+    color: #687385;
+    font-size: 1.05rem;
+}
+
+
+/* ==============================
+   ABOUT
+================================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr;
+    gap: 70px;
+    align-items: start;
+}
+
+.about-text p {
+    margin-bottom: 22px;
+    color: #566174;
+    font-size: 1.05rem;
+}
+
+.info-card {
+    padding: 28px;
+    background: white;
+    border: 1px solid #e2e5ea;
+    border-radius: 14px;
+}
+
+.info-item {
+    padding: 18px 0;
+    border-bottom: 1px solid #eceef2;
+}
+
+.info-item:first-child {
+    padding-top: 0;
+}
+
+.info-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.info-item span {
+    display: block;
+    margin-bottom: 4px;
+    color: #788292;
+    font-size: 0.82rem;
+}
+
+.info-item strong {
+    font-size: 0.98rem;
+}
+
+
+/* ==============================
+   ACTIVITIES
+================================= */
+
+.activities-section {
+    background: #eef0f5;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.activity-card {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding: 32px;
+    background: white;
+    border: 1px solid #e1e4e9;
+    border-radius: 14px;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(20, 25, 40, 0.08);
+}
+
+.activity-number {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #ecebff;
+    color: #4f46e5;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.activity-type {
+    margin-bottom: 7px;
+    color: #4f46e5;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.activity-content h3 {
+    margin-bottom: 14px;
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.activity-content > p {
+    margin-bottom: 14px;
+    color: #687385;
+    font-size: 0.94rem;
 }
 
 .activity-content code {
@@ -43,9 +363,26 @@
     font-family: Consolas, monospace;
 }
 
+.learned {
+    margin-top: 20px;
+    padding: 17px;
+    border-left: 3px solid #4f46e5;
+    background: #f7f7ff;
+}
+
+.learned strong {
+    font-size: 0.88rem;
+}
+
+.learned p {
+    margin-top: 5px;
+    color: #687385;
+    font-size: 0.88rem;
+}
+
 
 /* ==============================
-   GITHUB PROJECT LINKS
+   GITHUB LINKS
 ================================= */
 
 .github-link {
@@ -68,3 +405,228 @@
     transform: translateY(-2px);
 }
 
+
+/* ==============================
+   SKILLS
+================================= */
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.skill-group {
+    padding: 30px;
+    background: white;
+    border: 1px solid #e2e5ea;
+    border-radius: 14px;
+}
+
+.skill-group h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.skill-list span {
+    padding: 8px 13px;
+    border-radius: 6px;
+    background: #f0f1f5;
+    color: #4b5565;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+
+/* ==============================
+   CAREER GOAL
+================================= */
+
+.goal-section {
+    background: #eef0f5;
+}
+
+.goal-card {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 50px;
+    align-items: center;
+    padding: 55px;
+    background: #172033;
+    color: white;
+    border-radius: 20px;
+}
+
+.goal-card h2 {
+    max-width: 700px;
+    margin: 12px 0 20px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+}
+
+.goal-card .section-label {
+    color: #a7a3ff;
+}
+
+.goal-content > p:last-child {
+    max-width: 700px;
+    color: #c4cad5;
+}
+
+.goal-highlight {
+    padding: 25px;
+    border: 1px solid #3c4558;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.goal-icon {
+    margin-bottom: 12px;
+    color: #a7a3ff;
+    font-size: 2rem;
+}
+
+.goal-highlight p {
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+
+/* ==============================
+   FOOTER
+================================= */
+
+.footer {
+    padding: 35px 0;
+    background: #111827;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer h3 {
+    margin-bottom: 4px;
+}
+
+.footer p {
+    color: #9ba4b3;
+    font-size: 0.88rem;
+}
+
+.copyright {
+    text-align: right;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 850px) {
+
+    .hero {
+        min-height: auto;
+        padding: 90px 0;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .hero-card {
+        max-width: 450px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    .goal-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .navbar {
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 0;
+        background: white;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 13px 5%;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        letter-spacing: -2px;
+    }
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .activity-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 25px;
+    }
+
+    .goal-card {
+        padding: 32px 25px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .copyright {
+        text-align: left;
+    }
+}
