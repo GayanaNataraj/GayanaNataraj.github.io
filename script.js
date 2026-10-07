@@ -1,67 +1,198 @@
 
-// ==============================
+// =========================================================
+// GAYANA NATARAJ — PORTFOLIO JAVASCRIPT
+// =========================================================
+
+
+// =========================================================
 // MOBILE NAVIGATION
-// ==============================
+// =========================================================
 
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
+if (menuToggle && navLinks) {
 
-    navLinks.classList.toggle("active");
+    menuToggle.addEventListener("click", () => {
 
-    if (navLinks.classList.contains("active")) {
+        navLinks.classList.toggle("active");
 
-        menuToggle.textContent = "✕";
+        if (navLinks.classList.contains("active")) {
 
-        menuToggle.setAttribute(
+            menuToggle.textContent = "✕";
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Close navigation"
+            );
+
+        } else {
+
+            menuToggle.textContent = "☰";
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+
+        }
+
+    });
+
+
+    // Close mobile menu after clicking a navigation link
+
+    const navigationItems =
+        document.querySelectorAll(".nav-links a");
+
+    navigationItems.forEach((item) => {
+
+        item.addEventListener("click", () => {
+
+            navLinks.classList.remove("active");
+
+            menuToggle.textContent = "☰";
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+
+        });
+
+    });
+
+}
+
+
+// =========================================================
+// DARK / LIGHT MODE
+// =========================================================
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+
+// Check if the user already selected a theme
+
+const savedTheme =
+    localStorage.getItem("portfolio-theme");
+
+
+// Apply saved dark mode
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark-mode");
+
+}
+
+
+// =========================================================
+// UPDATE THEME BUTTON ICON
+// =========================================================
+
+function updateThemeIcon() {
+
+    if (!themeToggle) {
+        return;
+    }
+
+
+    if (document.body.classList.contains("dark-mode")) {
+
+        // Dark mode is active → show sun
+
+        themeToggle.textContent = "☀";
+
+        themeToggle.setAttribute(
             "aria-label",
-            "Close navigation"
+            "Switch to light mode"
+        );
+
+        themeToggle.setAttribute(
+            "title",
+            "Switch to light mode"
         );
 
     } else {
 
-        menuToggle.textContent = "☰";
+        // Light mode is active → show moon
 
-        menuToggle.setAttribute(
+        themeToggle.textContent = "☾";
+
+        themeToggle.setAttribute(
             "aria-label",
-            "Open navigation"
+            "Switch to dark mode"
+        );
+
+        themeToggle.setAttribute(
+            "title",
+            "Switch to dark mode"
         );
 
     }
 
-});
+}
 
 
-// ==============================
-// CLOSE MOBILE MENU
-// AFTER CLICKING A NAVIGATION LINK
-// ==============================
+// Set the correct icon when the page loads
 
-const navigationItems =
-    document.querySelectorAll(".nav-links a");
+updateThemeIcon();
 
-navigationItems.forEach((item) => {
 
-    item.addEventListener("click", () => {
+// =========================================================
+// DARK / LIGHT MODE BUTTON
+// =========================================================
 
-        navLinks.classList.remove("active");
+if (themeToggle) {
 
-        menuToggle.textContent = "☰";
+    themeToggle.addEventListener("click", () => {
 
-        menuToggle.setAttribute(
-            "aria-label",
-            "Open navigation"
-        );
+        // Switch between light and dark mode
+
+        document.body.classList.toggle("dark-mode");
+
+
+        // Save the selected theme
+
+        if (document.body.classList.contains("dark-mode")) {
+
+            localStorage.setItem(
+                "portfolio-theme",
+                "dark"
+            );
+
+        } else {
+
+            localStorage.setItem(
+                "portfolio-theme",
+                "light"
+            );
+
+        }
+
+
+        // Change the button icon
+
+        updateThemeIcon();
 
     });
 
-});
+}
 
 
-// ==============================
+// =========================================================
 // CURRENT YEAR IN FOOTER
-// ==============================
+// =========================================================
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+const yearElement =
+    document.getElementById("year");
+
+
+if (yearElement) {
+
+    yearElement.textContent =
+        new Date().getFullYear();
+
+}
